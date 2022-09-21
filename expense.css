@@ -38,6 +38,157 @@ body {
     align-items: center;
 }
 
+#modal {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(85, 83, 83, .5);
+}
+
+#popup {
+    height: 400px;
+    width: 450px;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transform: scale(1);
+}
+
+#popupnav {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#popuptitle {
+    font-size: 36px;
+    position: absolute;
+}
+
+#popuptext {
+    position: absolute;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#popupnext {
+    height: 48px;
+    width: 150px;
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#popupnext:hover {
+    cursor: pointer;
+}
+
+#popupnext-text {
+ font-size: 24px;   
+}
+
+#second-popup {
+    height: 450px;
+    width: 450px;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+    transform: scale(0);
+}
+
+#secondnav {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#secondtitle {
+    font-size: 36px;
+}
+
+.amount {
+    position: absolute;
+}
+
+#weeklybudget {
+    top: 75px;
+}
+
+#monday {
+    top: 115px;
+}
+
+#tuesday {
+    top: 155px;
+}
+
+#wednesday {
+    top: 195px;
+}
+
+#thursday {
+    top: 235px;
+}
+
+#friday {
+    top: 275px;
+}
+
+#saturday {
+    top: 315px;
+}
+
+#sunday {
+    top: 355px;
+}
+
+#submit {
+    height: 36px;
+    width: 177px;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 395px;
+}
+
+#submit:hover {
+    cursor: pointer;
+}
+
+#submit-text {
+    font-size: 24px;
+}
+
 #balance {
     align-self: flex-start;
     color: hsl(33, 100%, 98%);
@@ -45,7 +196,6 @@ body {
     top: 35px;
     left: 75px;
     font-family: 'DM Sans', sans-serif;
-    
 }
 
 #balance-amount {
@@ -125,7 +275,7 @@ body {
     background-color: hsl(10, 79%, 65%);
     position: relative;
     top: 195px;
-    transition: 1s;
+    transition: 2s;
     
 }
 
@@ -162,7 +312,6 @@ body {
 
 #last-amount {
     position: relative;
-    z-index: 2;
     top: 155px;
     left: 65px;
     color: hsl(25, 47%, 15%);

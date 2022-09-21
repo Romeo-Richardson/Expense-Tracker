@@ -12,11 +12,36 @@
     <title>Expense</title>
 </head>
 <body>
+    <div id="modal">
+        <div id="popup">
+            <div id="popupnav">
+                <div id="popuptitle">Expense Tracker</div>
+            </div>
+            <div id="popuptext">The purpose of this Project is to display my ability to visualize data using Javascript. This project was made with Back-end input in mind, however I took it upon my self to add the following user input form for presentation purposes. The data inputed will be visually represented in a graph, as a perfect one for one representation of the amount spent per day relative to the set budget.</div>
+            <div id="popupnext" onclick="closeFirstModal()">
+                <div id="popupnext-text">Continue</div>
+            </div>
+        </div>
+        <div id="second-popup">
+            <div id="secondnav">
+                <div id="secondtitle">User Input</div>
+            </div>
+            <input id="monday" class="amount" type="number" placeholder="$monday">
+            <input id="tuesday" class="amount" type="number" placeholder="$tuesday">
+            <input id="wednesday" class="amount" type="number" placeholder="$wednesday">
+            <input id="thursday" class="amount" type="number" placeholder="$thursday">
+            <input id="friday" class="amount" type="number" placeholder="$friday">
+            <input id="saturday" class="amount" type="number" placeholder="$saturday">
+            <input id="sunday" class="amount" type="number" placeholder="$sunday">
+            <input type="number" id="weeklybudget" class="amount" placeholder="$weekly-budget">
+            <div id="submit" onclick="closeSecondModal()"><div id="submit-text">Submit</div></div>
+        </div>
+    </div>
     <div id="banner">
-        <div id="balance">My Balance</div>
-        <div id="balance-amount">$921.48</div>
-        <div id="budget">Weekly Budget</div>
-        <div id="budget-amount">Dynamic</div>
+        <div id="balance">Weekly Budget</div>
+        <div id="balance-amount">N/A</div>
+        <div id="budget">Daily Budget</div>
+        <div id="budget-amount">N/A</div>
         <div id="left-circle"></div>
         <div id="right-circle"></div>
     </div>
@@ -40,9 +65,9 @@
             <div class="graph" id="graph6"></div>
             <div class="graph" id="graph7"></div>
         </div>
-        <div id="this-month">Total this month</div>
-        <div id="this-amount">Dynamic</div>
-        <div id="last-month">from last month</div>
+        <div id="this-month">Week Total</div>
+        <div id="this-amount">N/A</div>
+        <div id="last-month">from last week</div>
         <div id="last-amount">+2.4%</div>
     </div>
 </body>

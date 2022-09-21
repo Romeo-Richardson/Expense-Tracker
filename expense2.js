@@ -1,27 +1,69 @@
-let dailyBudget = 600;
-let budgetAmount = document.getElementById("budget-amount");
-budgetAmount.innerHTML = `$${dailyBudget}`;
 
 let spent = {
-    monday: 75,
-    tuesday: 210,
-    wednesday: 400,
-    thursday: 150,
-    friday: 300,
-    saturday: 250,
-    sunday: 400,
+    monday: 0,
+    tuesday: 0,
+    wednesday: 0,
+    thursday: 0,
+    friday: 0,
+    saturday: 0,
+    sunday: 0,
 };
 
-function totalThisMonth(){
-  let empty = [];
-  for(let [key, value] of Object.entries(spent)){
-    empty.push(value);
+let userInputs = {
+  mon: document.getElementById('monday'),
+  tues: document.getElementById('tuesday'),
+  wed: document.getElementById('wednesday'),
+  thur: document.getElementById('thursday'),
+  fri: document.getElementById('friday'),
+  sat: document.getElementById('saturday'),
+  sun: document.getElementById('sunday'),
+};
+
+function closeFirstModal(){
+  let firstModal = document.getElementById('popup');
+  firstModal.style.transform = 'scale(0)';
+  let secondModal = document.getElementById('second-popup');
+  secondModal.style.transform = 'scale(1)';
+};
+
+function closeSecondModal(){
+  let modal = document.getElementById('modal');
+  modal.style.transform = 'scale(0)';
+  let weekly = document.getElementById('weeklybudget');
+  let weeklyDisplay = document.getElementById('balance-amount');
+  weeklyDisplay.innerHTML = `$${weekly.value}`;
+  dailyBudget = Math.round(weekly.value / 7);
+  let budgetAmount = document.getElementById("budget-amount");
+  budgetAmount.innerHTML = `$${dailyBudget}`;
+  let inputArray = []; 
+  for(let [key, value] of Object.entries(userInputs)){
+    inputArray.push(Number(value.value));
   };
-  let total = empty.reduce((counter, amount)=>{
-    return counter += amount;
+  let indexCounter = 0;
+  for(value in spent){
+    spent[value] = inputArray[indexCounter];
+    indexCounter++;
+  };
+  let newArray = inputArray.reduce((counter, value)=>{
+    return counter + value;
   }, 0);
-  let element = document.getElementById('this-amount');
-  element.innerHTML = `$${total}`;
+  let displayAmount = document.getElementById('this-amount');
+  displayAmount.innerHTML = `$${newArray}`;
+  let empty = [];
+  for(property in spent){
+    let incAmount =  spent[property] / (dailyBudget * .01); 
+    let transAmount = incAmount * .8;
+    empty.push(transAmount);
+  };
+  let transCounter = 0;
+  for(let [key, value] of Object.entries(graphs)){
+    value.style.transform = `scaleY(${empty[transCounter]})`;
+    if(empty[transCounter] > 40){
+      value.style.backgroundColor = 'red';
+    } else value.style.backgroundColor = 'green';
+    transCounter++;
+  };
+  
 };
 
 let graphs = {
@@ -35,27 +77,4 @@ let graphs = {
 };
 
 
-function budgetCalc(){
-let empty = [];
-for(property in spent){
-let incAmount =  spent[property] / (dailyBudget * .01); 
-let transAmount = incAmount * .8;
-empty.push(transAmount);
-}
-return empty;
-};
 
-let transArray = budgetCalc();
-
-function transform (){
-  graphs.monday.style.transform = `scaleY(${transArray[0]})`;
-  graphs.tuesday.style.transform = `scaleY(${transArray[1]})`;
-  graphs.wednesday.style.transform = `scaleY(${transArray[2]})`;
-  graphs.thursday.style.transform = `scaleY(${transArray[3]})`;
-  graphs.friday.style.transform = `scaleY(${transArray[4]})`;
-  graphs.saturday.style.transform = `scaleY(${transArray[5]})`;
-  graphs.sunday.style.transform = `scaleY(${transArray[6]})`;
-}
-
-transform();
-totalThisMonth();
